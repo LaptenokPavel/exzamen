@@ -14,6 +14,7 @@ function App() {
    return (
        <div>
            <h2>Hello</h2>
+           <h3>word!</h3>
 <Counter
     data={data}
     setData={setData}
