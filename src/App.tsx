@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import './App.module.css';
+import s from'./App.module.css';
 import {Counter} from "./Counter";
-
+import {CounterCheck} from "./CounterCheck";
 
 function App() {
     let startValue = 0;
@@ -11,13 +11,21 @@ function App() {
 
 
     return (
-        <div>
-            <Counter
+        <div className={s.counter}>
+            <div><CounterCheck
                 data={data}
                 setData={setData}
                 startValue={startValue}
                 finishValue={finishValue}
             />
+            </div>
+            <div><Counter
+                data={data}
+                setData={setData}
+                startValue={startValue}
+                finishValue={finishValue}
+            /></div>
+
         </div>
     )
 }

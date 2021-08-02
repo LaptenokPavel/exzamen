@@ -1,7 +1,8 @@
 import s from "./App.module.css";
 import React from "react";
+import {Button} from "./Button";
 
-type CounterPropsType = {
+export type CounterPropsType = {
     data: number
     setData: (data: number) => void
     startValue: number
@@ -20,19 +21,23 @@ export function Counter(props: CounterPropsType) {
                 props.data === props.finishValue ? s.displayEnd : s.display}>
                 <div className={s.number}>{props.data}</div>
             </div>
-
             <div className={s.button}>
-                <button disabled={props.data === props.finishValue}
-                        className={s.button1}
-                        onClick={incButton}>inc
-                </button>
-                <button disabled={props.data === props.startValue}
-                        className={s.button1}
-                        onClick={resetButton}>reset
-                </button>
+                <Button onClick={incButton}
+                       data={props.data}
+                       finishValue={props.finishValue}
+                       name={'inc'}
+            />
+                <Button onClick={resetButton}
+                        data={props.data}
+                        startValue={props.startValue}
+                        name={'reset'}
+                />
             </div>
+
+
         </div>
     )
 }
+
 
 
