@@ -35,6 +35,12 @@
     width: 80px;
 
 }
+.inputred {
+    width: 80px;
+    background-color: red;
+    border: 1px solid red;
+
+}
 
 .display {
     width: 250px;

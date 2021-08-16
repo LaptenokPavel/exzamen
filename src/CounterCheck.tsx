@@ -1,22 +1,18 @@
 import s from "./App.module.css";
-import React, {ChangeEvent} from "react";
-import {Button} from "./Button";
+import React, {useState} from "react";
 
-export type CounterPropsType = {
-    data: number
-    setData: (data:number)=>void
+type CounterCheckType = {
     startValue: number
     finishValue: number
-
+    changeUp: (e: any) => void
+    changeDown: (e: any) => void
+    onClick:() => void
 }
 
-export function CounterCheck(props:CounterPropsType) {
-    const changeUp = (e: any) => {
-            let value = props.setData(e.currentTarget.value);
-if (props.data === 0)
-    alert("jjjjjj")
-    }
-        return (
+
+export function CounterCheck(props: CounterCheckType) {
+    return (
+        <div>
             <div className={s.tablo}>
                 <div>
                     <div className={s.displayCheck}>
@@ -24,31 +20,35 @@ if (props.data === 0)
                             max value:
                         </div>
                         <div>
-                            <input className={s.input}
+                            <input className={props.finishValue < props.startValue ? s.inputred : s.input}
                                    type="number"
-                                   onChange={changeUp}
-                                   value={props.data}
-
+                                   onChange={props.changeUp}
+                                   value={props.finishValue}
                             />
                         </div>
                         <div>
                             start value:
                         </div>
                         <div>
-                            <input className={s.input} type="number"
-                                   />
+                            <input className={props.startValue < 0 ? s.inputred : s.input}
+                                   type="number"
+                                   onChange={props.changeDown}
+                                   value={props.startValue}
+                            />
                         </div>
                     </div>
-
                 </div>
                 <div className={s.button}>
-                    <Button
-
-                        name={'set'}
-                    />
+                    <div>
+                        <button
+                            className={s.button1}
+                            onClick={()=>{props.onClick()}}
+                            disabled={props.startValue < 0 || props.startValue >= props.finishValue}>set
+                        </button>
+                    </div>
                 </div>
             </div>
-        )
-
+        </div>
+    )
 }
 
