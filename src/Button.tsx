@@ -2,16 +2,25 @@ import s from "./App.module.css";
 import React from "react";
 
 export type ButtonType = {
-    name: string
-    startValue: number
-    finishValue:number
-    onClick: (name:string)=>void
+value:string
+    onClick: () => void
+    disabled: boolean
 }
 
 
 export const Button = (props: ButtonType) => {
+const onClickButton = () => {
+    props.onClick()
+}
 
     return (
-<div></div>
+<div>
+    <button className={s.button1}
+    onClick={onClickButton}
+    disabled={props.disabled}
+    >
+        {props.value}
+</button>
+       </div>
     )
 }

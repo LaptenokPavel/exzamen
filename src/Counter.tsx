@@ -1,15 +1,20 @@
 import s from "./App.module.css";
 import React, {useState} from "react";
+import {Button} from "./Button";
 
 
 type CounterType = {
     startValueCounter: number
     finishValueCounter: number
+    inc:boolean
     incButton: () => void
     resetButton: () => void
 }
 
 export function Counter(props: CounterType) {
+
+
+
     return (
         <div className={s.tablo}>
             <div className={
@@ -19,17 +24,18 @@ export function Counter(props: CounterType) {
             </div>
             <div className={s.button}>
                 <div>
-                    <button
-                        className={s.button1}
-                        onClick={()=>{props.incButton()}}
-                        disabled={props.startValueCounter == props.finishValueCounter}
-                    >ins
-                    </button>
+                    <Button value={'inc'}
+                            onClick={props.incButton}
+                            disabled={props.inc}
+                    />
+
                 </div>
                 <div>
                     <button
                         className={s.button1}
-                        onClick={()=>{props.resetButton()}}
+                        onClick={() => {
+                            props.resetButton()
+                        }}
                     >reset
                     </button>
                 </div>
@@ -37,6 +43,5 @@ export function Counter(props: CounterType) {
         </div>
     )
 }
-
 
 

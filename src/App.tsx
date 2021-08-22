@@ -10,7 +10,12 @@ function App() {
     let [finishValue, setFinishValue] = useState<number>(0);
 
     let [startValueCounter, setStartValueCounter] = useState<number>(0);
-    let [finishValueCounter, setFinishValueCounter] = useState<number>(5);
+    let [finishValueCounter, setFinishValueCounter] = useState<number>(0);
+
+
+    let [inc, setInc] = useState(false)
+    let [reset, setReset] = useState(false)
+
 
     const onClick = () => (
         startValueCounter = startValue,
@@ -27,8 +32,14 @@ function App() {
         setStartValue(e.currentTarget.value)
     }
 
-    const incButton = () => (setStartValueCounter(startValueCounter++))
+    const incButton = () => {
+            setStartValueCounter(startValueCounter++)
+    }
     const resetButton = () => (setStartValueCounter(0))
+
+    if(startValueCounter === finishValueCounter){
+        inc = true
+    }
 
     return (
         <div className={s.counter}>
@@ -45,6 +56,7 @@ function App() {
                 <Counter
                     startValueCounter={startValueCounter}
                     finishValueCounter={finishValueCounter}
+                    inc={inc}
                     incButton={incButton}
                     resetButton={resetButton}
                 />
