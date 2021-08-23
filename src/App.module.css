@@ -33,13 +33,13 @@
 
 .input {
     width: 80px;
-
+    text-align:center
 }
 .inputred {
     width: 80px;
     background-color: red;
     border: 1px solid red;
-
+    text-align:center
 }
 
 .display {
@@ -51,6 +51,8 @@
     background-color: aqua;
     border-radius: 5px;
     display: flex;
+    font-size: 40px;
+    text-align:center
 }
 
 
@@ -63,9 +65,12 @@
     background-color: aqua;
     border-radius: 5px;
     display: flex;
+    font-size: 40px;
+    text-align:center
 }
 
 .number {
+    display: block;
     font-size: 40px;
     margin: 0 auto;
 }

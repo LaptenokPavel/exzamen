@@ -4,23 +4,28 @@ import {Button} from "./Button";
 
 
 type CounterType = {
+    startValue: number
+    finishValue: number
     startValueCounter: number
     finishValueCounter: number
-    inc:boolean
+    inc: boolean
+    reset: boolean
     incButton: () => void
     resetButton: () => void
 }
 
 export function Counter(props: CounterType) {
 
-
-
     return (
         <div className={s.tablo}>
-            <div className={
-                props.startValueCounter == props.finishValueCounter ? s.displayEnd : s.display}>
-                <div className={s.number}>
-                    {props.startValueCounter}</div>
+
+
+            <div>
+                <input
+                    value={(props.startValue < 0 || props.startValue >= props.finishValue) ? 'Error' : props.startValueCounter}
+                    className={
+                        (props.startValue < 0 || props.startValue >= props.finishValue) ? s.displayEnd : s.display}
+                />
             </div>
             <div className={s.button}>
                 <div>
@@ -28,20 +33,14 @@ export function Counter(props: CounterType) {
                             onClick={props.incButton}
                             disabled={props.inc}
                     />
-
                 </div>
                 <div>
-                    <button
-                        className={s.button1}
-                        onClick={() => {
-                            props.resetButton()
-                        }}
-                    >reset
-                    </button>
+                    <Button value={'reset'}
+                            onClick={props.resetButton}
+                            disabled={props.reset}/>
                 </div>
             </div>
         </div>
     )
 }
-
 
